@@ -18,20 +18,22 @@ class Getlinks:
                     continue
                 arr.append(f"https://maktabkhooneh.org{i}")
                 c+=1
-        return arr[2::]
+        return arr[3::]
    
     def getMp4(self,web):
         self.web = web
         x = requests.get(web)
         webpage = html.fromstring(x.content)
         ln = webpage.xpath('//a/@href')
-        h = ""
+        name = ""
         c=1
         for i in ln:
             if "video-resolver" in i and c == 1:
+                print(f"---- {i} ----")
                 ar = x.text.split("<")
                 for b in ar:
                     if "h1" in b[0:2]:
-                        h = (b[33:])
-                return i,h
+                        print(c,b[33:])
+                        # name = (b[33:])
+                return i
                 c+=1
