@@ -2,8 +2,8 @@ import requests
 from lxml import html
 
 class Getlinks:
-    # Get Link of each videos webpage
-    
+
+    # Return List of video`s link from given page
     def getlink(self,web):
         self.web = web
         x = requests.get(web)
@@ -20,20 +20,22 @@ class Getlinks:
                 c+=1
         return arr[3::]
    
-    def getMp4(self,web):
-        self.web = web
-        x = requests.get(web)
+    # Return name and download link of a video from each page
+    def getMp4(self,webs):
+        self.webs = webs
+        x = requests.get(webs)
         webpage = html.fromstring(x.content)
         ln = webpage.xpath('//a/@href')
-        name = ""
         c=1
         for i in ln:
             if "video-resolver" in i and c == 1:
+                # print video Dl link
                 print(f"---- {i} ----")
+                # Get Video name 
                 ar = x.text.split("<")
                 for b in ar:
                     if "h1" in b[0:2]:
                         print(c,b[33:])
-                        # name = (b[33:])
-                return i
+                        name = (b[33:])
+                return i,name
                 c+=1
