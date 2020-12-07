@@ -21,12 +21,13 @@ class Getlinks:
         return arr[3::]
    
     # Return name and download link of a video from each page
-    def getMp4(self,webs):
+    def getMp4(self,webs,cookieSid):
         self.webs = webs
+        self.cookieSid = cookieSid
         ## cookies 
-        cookie = {'sessionid': 'ok9ets8ftx7p2c3wth77sfksyryfjlmk',
+        cookie = {'sessionid': cookieSid,
         'never_show_phone_number':'true',
-        'csrftoken':'RSA3AUZyo1rQihHnh5UUclPGKH4pd9qFSYKewIaSnQ2rbKFGbdC8xbxUwL6AE0if'
+        # 'csrftoken':'RSA3AUZyo1rQihHnh5UUclPGKH4pd9qFSYKewIaSnQ2rbKFGbdC8xbxUwL6AE0if'
         }
         # Use python requests module to get related url and send cookies to it with cookies parameter. 
         x = requests.get(webs , cookies=cookie)
