@@ -18,7 +18,7 @@ class Getlinks:
                     continue
                 arr.append(f"https://maktabkhooneh.org{i}")
                 c+=1
-        return arr[3::]
+        return arr[2::]
    
     # Return name and download link of a video from each page
     def getMp4(self,webs,cookieSid):
@@ -26,8 +26,7 @@ class Getlinks:
         self.cookieSid = cookieSid
         ## cookies 
         cookie = {'sessionid': cookieSid,
-        'never_show_phone_number':'true',
-        # 'csrftoken':'RSA3AUZyo1rQihHnh5UUclPGKH4pd9qFSYKewIaSnQ2rbKFGbdC8xbxUwL6AE0if'
+        'never_show_phone_number':'true'
         }
         # Use python requests module to get related url and send cookies to it with cookies parameter. 
         x = requests.get(webs , cookies=cookie)
